@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useMemo } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import NotFoundPage from "./pages/_404/_404";
