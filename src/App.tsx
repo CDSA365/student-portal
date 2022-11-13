@@ -8,7 +8,7 @@ import { routes } from "./routes/routes";
 const SuspenseFallback = () => {
     return (
         <div className="h-[100vh] w-full flex items-center justify-center">
-            <Spin />
+            <Spin size="large" />
         </div>
     );
 };
