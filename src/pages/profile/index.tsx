@@ -407,7 +407,6 @@ const PasswordChangeSection = ({ user }: any) => {
 };
 
 const PaymentDetails = ({ user }: any) => {
-    console.log(user);
     return (
         <Col span={24} style={{ height: "100%" }}>
             <Card
