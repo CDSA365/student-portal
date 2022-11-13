@@ -25,11 +25,7 @@ const Dashboard = (props: Props) => {
 
     const items: ItemType[] = [
         {
-            label: (
-                <span className="text-slate-500 text-xs font-semibold uppercase">
-                    Dashboard
-                </span>
-            ),
+            label: <span className="text-slate-500 text-xs font-semibold uppercase">Dashboard</span>,
             key: "dashboard",
             type: "group",
             children: [
@@ -42,11 +38,7 @@ const Dashboard = (props: Props) => {
             ],
         },
         {
-            label: (
-                <span className="text-slate-500 text-xs font-semibold uppercase">
-                    Classes
-                </span>
-            ),
+            label: <span className="text-slate-500 text-xs font-semibold uppercase">Classes</span>,
             key: "classes",
             type: "group",
             children: [
@@ -68,11 +60,7 @@ const Dashboard = (props: Props) => {
             ],
         },
         {
-            label: (
-                <span className="text-slate-500 text-xs font-semibold uppercase">
-                    Settings
-                </span>
-            ),
+            label: <span className="text-slate-500 text-xs font-semibold uppercase">Settings</span>,
             key: "settings",
             type: "group",
             children: [
@@ -85,11 +73,7 @@ const Dashboard = (props: Props) => {
             ],
         },
         {
-            label: (
-                <span className="text-slate-500 text-xs font-semibold uppercase">
-                    Account
-                </span>
-            ),
+            label: <span className="text-slate-500 text-xs font-semibold uppercase">Account</span>,
             key: "account",
             type: "group",
             children: [
@@ -128,9 +112,7 @@ const Dashboard = (props: Props) => {
                     defaultSelectedKeys={["0"]}
                     items={items}
                     inlineCollapsed={false}
-                    onClick={({ key }) =>
-                        navigate(key === "home" ? "/" : `/${key}`)
-                    }
+                    onClick={({ key }) => navigate(key === "home" ? "/" : `/${key}`)}
                 />
             </Sider>
             <Layout style={{ marginLeft: 220, minHeight: "100vh" }}>
@@ -140,9 +122,7 @@ const Dashboard = (props: Props) => {
                         <Outlet />
                     </DashboardContent>
                 </Content>
-                <Footer style={{ textAlign: "center" }}>
-                    Ant Design ©2018 Created by Ant UED
-                </Footer>
+                <Footer style={{ textAlign: "center" }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>
         </Layout>
     ) : (

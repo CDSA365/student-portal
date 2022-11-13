@@ -1,14 +1,4 @@
-import {
-    Alert,
-    Avatar,
-    Button,
-    Card,
-    Col,
-    Descriptions,
-    Input,
-    Row,
-    Tag,
-} from "antd";
+import { Alert, Avatar, Button, Card, Col, Descriptions, Input, Row, Tag } from "antd";
 import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { config } from "../../config/config";
@@ -32,9 +22,7 @@ type AlertProps = {
 };
 
 const FormLabel = ({ message, className }: any) => {
-    return (
-        <p className={`font-semibold text-gray-400 ${className}`}>{message}</p>
-    );
+    return <p className={`font-semibold text-gray-400 ${className}`}>{message}</p>;
 };
 
 const ProfileDetail = ({ user, fetchUser }: any) => {
@@ -129,11 +117,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["first_name"] || ""}
                             name="first_name"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("first_name")
-                                    ? "error"
-                                    : ""
-                            }
+                            status={errorFields.includes("first_name") ? "error" : ""}
                         />
                     </Col>
                     <Col span={12}>
@@ -144,9 +128,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["last_name"] || ""}
                             name="last_name"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("last_name") ? "error" : ""
-                            }
+                            status={errorFields.includes("last_name") ? "error" : ""}
                         />
                     </Col>
                 </Row>
@@ -159,11 +141,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["address_one"] || ""}
                             name="address_one"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("address_one")
-                                    ? "error"
-                                    : ""
-                            }
+                            status={errorFields.includes("address_one") ? "error" : ""}
                         />
                     </Col>
                     <Col span={12}>
@@ -174,11 +152,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["address_two"] || ""}
                             name="address_two"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("address_two")
-                                    ? "error"
-                                    : ""
-                            }
+                            status={errorFields.includes("address_two") ? "error" : ""}
                         />
                     </Col>
                 </Row>
@@ -202,9 +176,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["district"] || ""}
                             name="district"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("district") ? "error" : ""
-                            }
+                            status={errorFields.includes("district") ? "error" : ""}
                         />
                     </Col>
                 </Row>
@@ -217,9 +189,7 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["state"] || ""}
                             name="state"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("state") ? "error" : ""
-                            }
+                            status={errorFields.includes("state") ? "error" : ""}
                         />
                     </Col>
                     <Col span={12}>
@@ -230,21 +200,13 @@ const ProfileDetail = ({ user, fetchUser }: any) => {
                             value={formData["pincode"] || ""}
                             name="pincode"
                             onChange={handleChange}
-                            status={
-                                errorFields.includes("pincode") ? "error" : ""
-                            }
+                            status={errorFields.includes("pincode") ? "error" : ""}
                         />
                     </Col>
                 </Row>
                 <Row gutter={12}>
                     <Col span={24}>
-                        {alert["show"] && (
-                            <Alert
-                                type={alert["type"]}
-                                message={alert["message"]}
-                                showIcon
-                            />
-                        )}
+                        {alert["show"] && <Alert type={alert["type"]} message={alert["message"]} showIcon />}
                     </Col>
                     <Col span={24}>
                         <Button
@@ -283,20 +245,11 @@ const PasswordChangeSection = ({ user }: any) => {
     };
 
     const validateFormData = (): [boolean, string | null] => {
-        if (
-            !passwordData["current_password"] ||
-            !passwordData["new_password"] ||
-            !passwordData["confirm_password"]
-        ) {
+        if (!passwordData["current_password"] || !passwordData["new_password"] || !passwordData["confirm_password"]) {
             return [false, "Please fill all the fields"];
-        } else if (
-            passwordData["new_password"] !== passwordData["confirm_password"]
-        ) {
+        } else if (passwordData["new_password"] !== passwordData["confirm_password"]) {
             return [false, "New passwords did not match"];
-        } else if (
-            passwordData["new_password"].length < 8 ||
-            passwordData["confirm_password"].length < 8
-        ) {
+        } else if (passwordData["new_password"].length < 8 || passwordData["confirm_password"].length < 8) {
             return [false, "Password should have minimum 8 characters"];
         } else {
             return [true, null];
@@ -332,11 +285,7 @@ const PasswordChangeSection = ({ user }: any) => {
             if (counter > 0) {
                 setTimeout(() => {
                     setCounter((count) => count - 1);
-                    setInfo(
-                        `Password Updated. Please login again in ${
-                            counter - 1
-                        } sec.`
-                    );
+                    setInfo(`Password Updated. Please login again in ${counter - 1} sec.`);
                 }, 1000);
             } else {
                 auth.logout();
@@ -391,13 +340,7 @@ const PasswordChangeSection = ({ user }: any) => {
                             <Alert type="success" message={info} showIcon />
                         </div>
                     )}
-                    <Button
-                        size="large"
-                        type="primary"
-                        className="mt-4"
-                        block
-                        onClick={() => handleSubmit(user.id)}
-                    >
+                    <Button size="large" type="primary" className="mt-4" block onClick={() => handleSubmit(user.id)}>
                         Update Password
                     </Button>
                 </div>
@@ -409,95 +352,37 @@ const PasswordChangeSection = ({ user }: any) => {
 const PaymentDetails = ({ user }: any) => {
     return (
         <Col span={24} style={{ height: "100%" }}>
-            <Card
-                title="Payment Details"
-                style={{ height: "100%" }}
-                bodyStyle={{ padding: 0 }}
-            >
+            <Card title="Payment Details" style={{ height: "100%" }} bodyStyle={{ padding: 0 }}>
                 <Descriptions column={1} size="default" bordered>
-                    <Descriptions.Item
-                        label={<FormLabel className="mb-0" message="Fee" />}
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Fee" />}>
                         &#8377;{user?.fee}
                     </Descriptions.Item>
-                    <Descriptions.Item
-                        label={
-                            <FormLabel
-                                className="mb-0"
-                                message="Payment Period"
-                            />
-                        }
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Payment Period" />}>
                         Every {user?.gap} {user?.period}
                     </Descriptions.Item>
-                    <Descriptions.Item
-                        label={
-                            <FormLabel
-                                className="mb-0"
-                                message="Last Payment"
-                            />
-                        }
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Last Payment" />}>
                         {moment(user.order_created_at).format("LL")}
                     </Descriptions.Item>
-                    <Descriptions.Item
-                        label={
-                            <FormLabel
-                                className="mb-0"
-                                message="Next Payment"
-                            />
-                        }
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Next Payment" />}>
                         {moment(user.next_due).format("LL")}
                     </Descriptions.Item>
-                    <Descriptions.Item
-                        label={
-                            <FormLabel
-                                className="mb-0"
-                                message="Last Payment Status"
-                            />
-                        }
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Last Payment Status" />}>
                         {user.payment_status === "paid" ? (
                             <Tag color="success" icon={<CheckCircleOutlined />}>
                                 {user.payment_status}
                             </Tag>
                         ) : (
-                            <Tag
-                                color="error"
-                                icon={<ExclamationCircleOutlined />}
-                            >
+                            <Tag color="error" icon={<ExclamationCircleOutlined />}>
                                 {user.payment_status}
                             </Tag>
                         )}
                     </Descriptions.Item>
-                    <Descriptions.Item
-                        label={
-                            <FormLabel
-                                className="mb-0"
-                                message="Last Receipt ID"
-                            />
-                        }
-                    >
+                    <Descriptions.Item label={<FormLabel className="mb-0" message="Last Receipt ID" />}>
                         {user.receipt_id}
                     </Descriptions.Item>
                     {moment().isAfter(user.next_due) && (
-                        <Descriptions.Item
-                            label={
-                                <FormLabel
-                                    className="mb-0"
-                                    message="Payment Overdue"
-                                />
-                            }
-                        >
-                            {Math.abs(
-                                moment(user.next_due).diff(
-                                    moment().format(),
-                                    "days",
-                                    false
-                                )
-                            )}{" "}
-                            Day(s)
+                        <Descriptions.Item label={<FormLabel className="mb-0" message="Payment Overdue" />}>
+                            {Math.abs(moment(user.next_due).diff(moment().format(), "days", false))} Day(s)
                         </Descriptions.Item>
                     )}
                 </Descriptions>
@@ -542,10 +427,7 @@ const ProfilePage = (props: Props) => {
                                 Account Active
                             </Tag>
                         ) : (
-                            <Tag
-                                color="#f87171"
-                                icon={<ExclamationCircleOutlined />}
-                            >
+                            <Tag color="#f87171" icon={<ExclamationCircleOutlined />}>
                                 Account Inactive
                             </Tag>
                         )}

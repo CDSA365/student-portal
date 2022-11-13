@@ -1,12 +1,11 @@
-import { Alert, Button, Divider, Form, Input } from "antd";
+import { Alert, Button, Form, Input } from "antd";
 import logo from "../../assets/cdsa-logo.png";
-import { LoginOutlined, EditOutlined } from "@ant-design/icons";
+import { LoginOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { config } from "../../config/config";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-import { useAppSelector } from "../../store/hooks";
 
 type Props = {};
 
@@ -76,19 +75,8 @@ const LoginPage = (props: Props) => {
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ span: 24 }}>
-                        {error && (
-                            <Alert
-                                message={error}
-                                type="error"
-                                className="w-full mb-4"
-                            />
-                        )}
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            className="w-full uppercase"
-                            icon={<LoginOutlined />}
-                        >
+                        {error && <Alert message={error} type="error" className="w-full mb-4" />}
+                        <Button type="primary" htmlType="submit" className="w-full uppercase" icon={<LoginOutlined />}>
                             Login
                         </Button>
                     </Form.Item>

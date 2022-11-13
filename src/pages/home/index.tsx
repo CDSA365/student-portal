@@ -7,7 +7,6 @@ import { config } from "../../config/config";
 import { useAppSelector } from "../../store/hooks";
 import * as _ from "lodash";
 import { Link } from "react-router-dom";
-import { LinkOutlined } from "@ant-design/icons";
 type Props = {};
 
 const ClassList = ({ classes }: { classes: any[] }) => {
@@ -18,9 +17,7 @@ const ClassList = ({ classes }: { classes: any[] }) => {
             classes
                 .map((el: any) => ({
                     title: el.title,
-                    description: moment(el.start_time)
-                        .tz("Asia/Kolkata")
-                        .format("LLLL"),
+                    description: moment(el.start_time).tz("Asia/Kolkata").format("LLLL"),
                     content: el.description,
                     slug: el.slug,
                 }))
@@ -42,11 +39,7 @@ const ClassList = ({ classes }: { classes: any[] }) => {
                                         {_.truncate(item.title, { length: 40 })}
                                     </span>
                                 }
-                                description={
-                                    <span className="text-stone-400">
-                                        {item.description}
-                                    </span>
-                                }
+                                description={<span className="text-stone-400">{item.description}</span>}
                             />
                             {_.truncate(item.content, { length: 80 })}
                         </List.Item>
@@ -79,15 +72,9 @@ const HomePage: FC<Props> = (props) => {
     }, [props]);
 
     useEffect(() => {
-        setScheduledClass(
-            classes.filter((x) => x.progress_state === "SCHEDULED")
-        );
-        setClassInProgress(
-            classes.filter((x) => x.progress_state === "IN-PROGRESS")
-        );
-        setCompletedClasses(
-            classes.filter((x) => x.progress_state === "COMPLETED")
-        );
+        setScheduledClass(classes.filter((x) => x.progress_state === "SCHEDULED"));
+        setClassInProgress(classes.filter((x) => x.progress_state === "IN-PROGRESS"));
+        setCompletedClasses(classes.filter((x) => x.progress_state === "COMPLETED"));
     }, [classes]);
 
     return (

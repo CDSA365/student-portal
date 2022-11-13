@@ -22,9 +22,7 @@ const columns: ColumnsType<ClassTableTypes> = [
         title: "Title",
         dataIndex: "title",
         key: "title",
-        render: (text, record) => (
-            <Link to={`/class/${record.slug}`}>{text}</Link>
-        ),
+        render: (text, record) => <Link to={`/class/${record.slug}`}>{text}</Link>,
     },
     {
         title: "Trainer",
@@ -66,9 +64,7 @@ const ClassesPage = (props: Props) => {
     const { status } = useParams();
     const [classes, setClasses] = useState<any[]>([]);
     const [dataSource, setDataSource] = useState<any[]>([]);
-    const [classStatus, setClassStatus] = useState<string | undefined>(
-        undefined
-    );
+    const [classStatus, setClassStatus] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         setClassStatus(
@@ -83,9 +79,7 @@ const ClassesPage = (props: Props) => {
         (async () => {
             const url = config.api.getStudentClasses + `/${user.id}`;
             const { data } = await axios.get(url);
-            setClasses(
-                data.filter((x: any) => x.progress_state === classStatus)
-            );
+            setClasses(data.filter((x: any) => x.progress_state === classStatus));
         })();
     }, [classStatus]);
 
@@ -118,9 +112,7 @@ const ClassesPage = (props: Props) => {
                 dataSource={dataSource}
                 columns={columns}
                 title={() => (
-                    <h4 className="my-0 text-md text-slate-500 font-semibold uppercase">
-                        {classStatus} classes
-                    </h4>
+                    <h4 className="my-0 text-md text-slate-500 font-semibold uppercase">{classStatus} classes</h4>
                 )}
             />
         </div>
