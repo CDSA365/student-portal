@@ -1,4 +1,4 @@
-const { VITE_API_BASE_URL } = import.meta.env;
+const { VITE_API_BASE_URL, VITE_PAYMENT_KEY } = import.meta.env;
 const BASE_URL = VITE_API_BASE_URL;
 
 /* A constant variable that is exporting the api endpoints. */
@@ -19,5 +19,9 @@ export const config = {
         updateStudentPassword: BASE_URL + "/student/update-password",
         updateStudent: BASE_URL + "/admin/student",
         getClassBySlug: BASE_URL + "/class/slug",
+        createOrder: BASE_URL + "/payment/create",
+    },
+    razorpay: {
+        key: VITE_PAYMENT_KEY,
     },
 };

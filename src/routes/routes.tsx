@@ -37,4 +37,10 @@ export const routes = [
         exact: "exact",
         public: false,
     },
+    {
+        path: "/payments",
+        component: lazy(() => import("../pages/payments")),
+        exact: "exact",
+        public: false,
+    },
 ];
